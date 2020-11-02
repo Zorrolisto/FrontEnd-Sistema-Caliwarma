@@ -1,0 +1,17 @@
+<div class="card mt-3 p-4 mat-elevation-z8" style="background-color:#303030; color: white;">
+    <div class="text-align-center text-center">
+        <h1>Institucion</h1>
+    </div>
+    
+    <!--Abrir Dialog -->
+    <div class="">
+        <button mat-raised-button (click)="openDialogInstitucion()" color="primary" class="mb-3" style="float: right;" type="button">
+            <a>Escoger Institucion</a>
+        </button>
+    </div>
+    <!--Termina abrir Dialog-->
+
+    <!--Mostrar Datos Institucion-->
+    <app-informacion-solo-institucion [institucion]="institucion"></app-informacion-solo-institucion>
+    <!--Termina Mostrar Datos Institucion-->
+</div>

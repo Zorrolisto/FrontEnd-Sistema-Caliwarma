@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Usuario } from './models.entity/usuario/usuario';
+import { LoginService } from './models.service/loginService/login.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ProyectoSemana6';
+  seRegistro:boolean =false;
+
+  constructor(
+    private usuarioService:LoginService) {
+  }
+  usuario:Usuario;
+
+  obtenerRoles(){
+    this.usuarioService.getUser().subscribe(
+      (usuario)=>this.usuario = usuario
+    );
+  }
+  
+  registroExitoso(mensaje) {
+    this.seRegistro = mensaje;
+  }
+
+  CerrarSesion(){
+    this.usuarioService.logout();
+    this.seRegistro = false;
+  }
 }

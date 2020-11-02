@@ -1,0 +1,43 @@
+<mat-toolbar color="primary" *ngIf="!form" style="padding-top: 120px;-webkit-box-shadow: inset 0px 32px 41px 0px rgba(0,0,0,0.23);
+-moz-box-shadow: inset 0px 32px 41px 0px rgba(0,0,0,0.23);
+box-shadow: inset 0px 32px 41px 0px rgba(0,0,0,0.23);">
+  <span style="margin-top: -55px; padding-left: 45%;">Instituciones</span>
+</mat-toolbar>
+<div class="container m-auto">
+    <!---Buscar-->
+    <div class="card mt-3 p-4 mat-elevation-z8" style="background-color:#303030; color: white;">
+       <app-buscar-institucion (propagar) ="Buscar($event)"></app-buscar-institucion>
+    </div>
+    <!--Tabla-->
+    <div class="card mt-3 p-4 mat-elevation-z8" style="background-color:#303030; color: white;">
+      <div class="" style="text-align: end;">
+        <button mat-raised-button *ngIf="!form && usuario!=null && (usuario.roles[0].authority=='ROLE_EMPLEADO' || usuario.roles[0].authority=='ROLE_ADMIN')" [routerLink]="['/hello/form/institucion']" color="primary" class="mb-3 m-auto" style="height: 15%; width: 15%;" type="button">
+            <a>Nueva institucion</a>
+        </button>
+      </div>
+      <div>
+        <app-tabla-institucion 
+        *ngIf="!form"
+        [nombre]="nombre"
+        [nroDeAlumnos]="nroDeAlumnos"
+        [nivel]="nivel"
+        [numero]="numero"
+        [departamento]="departamento"
+        [provincia]="provincia"
+        [distrito]="distrito"
+        [direccion]="direccion"
+        ></app-tabla-institucion>
+        
+        <app-tabla-institucion2
+        *ngIf="form"
+        [nombre]="nombre"
+        [nroDeAlumnos]="nroDeAlumnos"
+        [nivel]="nivel"
+        [numero]="numero"
+        [departamento]="departamento"
+        [provincia]="provincia"
+        [distrito]="distrito"
+        [direccion]="direccion"
+        ></app-tabla-institucion2>
+    </div>
+</div>

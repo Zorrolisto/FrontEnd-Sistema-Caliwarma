@@ -1,0 +1,41 @@
+<div class="row" *ngIf="institucion">
+    <mat-form-field class="col-lg-6"appearance="fill" >
+        <mat-label>ID</mat-label>
+        <input matInput disabled [(ngModel)]="institucion.id">
+    </mat-form-field>
+    <mat-form-field class="col-lg-6"appearance="fill" >
+        <mat-label>Numero</mat-label>
+        <input matInput disabled [(ngModel)]="institucion.numero">
+    </mat-form-field>
+    <mat-form-field class="col-lg-6"appearance="fill" >
+        <mat-label>Nombre</mat-label>
+        <input matInput disabled [(ngModel)]="institucion.nombre">
+    </mat-form-field>
+    <mat-form-field class="col-lg-6"appearance="fill" >
+        <mat-label>Nro de Alumnos</mat-label>
+        <input matInput disabled [(ngModel)]="institucion.nroDeAlumnos">
+    </mat-form-field>
+    <mat-form-field class="col-lg-6"appearance="fill" >
+        <mat-label>Nivel</mat-label>
+        <input matInput disabled [(ngModel)]="institucion.nivel">
+    </mat-form-field>
+    <mat-form-field class="col-lg-6"appearance="fill" >
+        <mat-label>Direccion</mat-label>
+        <input matInput disabled [(ngModel)]="institucion.lugar.direccion">
+    </mat-form-field>
+    <mat-form-field class="col-lg-4"appearance="fill" >
+        <mat-label>Departamento</mat-label>
+        <input matInput disabled [(ngModel)]="institucion.lugar.departamento">
+    </mat-form-field>
+    <mat-form-field class="col-lg-4"appearance="fill" >
+        <mat-label>Provincia</mat-label>
+        <input matInput disabled [(ngModel)]="institucion.lugar.provincia">
+    </mat-form-field>
+    <mat-form-field class="col-lg-4"appearance="fill" >
+        <mat-label>Distrito</mat-label>
+        <input matInput disabled [(ngModel)]="institucion.lugar.distrito">
+    </mat-form-field>
+</div>
+<div *ngIf="!institucion">
+    <mat-progress-bar mode="buffer"></mat-progress-bar>
+</div>

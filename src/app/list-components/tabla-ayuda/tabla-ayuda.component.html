@@ -1,0 +1,86 @@
+<div class="pt-4">
+    <div class="example-container mat-elevation-z8">
+        <div class="example-loading-shade"
+                *ngIf="isLoadingResults || isRateLimitReached">
+            <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+            <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+            El servidor no está respondiendo.
+            </div>
+        </div>
+        <div class="example-table-container">
+            <table mat-table [dataSource]="ayudas">
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let ayuda"> {{ayuda.id}}</td>
+            </ng-container>
+
+            <!-- Codigo Column -->
+            <ng-container matColumnDef="fechaDeLlegada">
+                <th mat-header-cell *matHeaderCellDef> Fecha de Llegada </th>
+                <td mat-cell *matCellDef="let ayuda">{{ayuda.fechaDeLlegada}}</td>
+            </ng-container>
+
+            <!-- infractorDato Column -->
+            <ng-container matColumnDef="fechaDeRegistro">
+                <th mat-header-cell *matHeaderCellDef> Fecha de Registro </th>
+                <td mat-cell *matCellDef="let ayuda">{{ayuda.fechaDeRegistro}}</td>
+            </ng-container>
+
+            <!-- situacion Column-->
+            <ng-container matColumnDef="fechaDeEnvio">
+                <th mat-header-cell *matHeaderCellDef> Fecha de Envio </th>
+                <td mat-cell *matCellDef="let ayuda"> {{ayuda.fechaDeEnvio}}</td>
+            </ng-container>
+
+            <!-- situacion Column-->
+            <ng-container matColumnDef="porcionesTotales">
+                <th mat-header-cell *matHeaderCellDef> Porciones </th>
+                <td mat-cell *matCellDef="let ayuda"> {{ayuda.porcionesTotales}}</td>
+            </ng-container>
+
+            <!-- lugar Column-->
+            <ng-container matColumnDef="precioTotal">
+                <th mat-header-cell *matHeaderCellDef> Precio </th>
+                <td mat-cell *matCellDef="let ayuda">{{ayuda.precioTotal}}</td>
+            </ng-container>
+
+            <!-- lugar Column-->
+            <ng-container matColumnDef="nombreInstitucion">
+                <th mat-header-cell *matHeaderCellDef> institucion </th>
+                <td mat-cell *matCellDef="let ayuda">{{ayuda.institucion.nombre}}</td>
+            </ng-container>
+
+            <!-- vehiculo Column -->
+            <ng-container matColumnDef="editar">
+                <th mat-header-cell *matHeaderCellDef> 
+                    <label *ngIf="usuario!=null && (usuario.roles[0].authority=='ROLE_EMPLEADO' || usuario.roles[0].authority=='ROLE_ADMIN')">Editar</label>
+                </th>
+                <td mat-cell *matCellDef="let ayuda"> 
+                    <a color="primary" *ngIf="usuario!=null && (usuario.roles[0].authority=='ROLE_EMPLEADO' || usuario.roles[0].authority=='ROLE_ADMIN')" [routerLink]="['/hello/form/ayuda/'+ ayuda.id]" class="btn">
+                        <mat-icon >edit</mat-icon>
+                    </a>
+                </td>
+            </ng-container>
+
+            <!-- lugar Column-->
+            <ng-container matColumnDef="eliminar">
+                <th mat-header-cell *matHeaderCellDef> 
+                    <label *ngIf="usuario!=null && usuario.roles[0].authority=='ROLE_ADMIN'">Eliminar</label>    
+                </th>
+                <td mat-cell *matCellDef="let ayuda">
+                    <a color="primary" (click)="eliminar(ayuda.id)" *ngIf="usuario!=null && usuario.roles[0].authority=='ROLE_ADMIN'" class="btn">
+                        <mat-icon >delete</mat-icon>
+                    </a>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+
+        <mat-paginator [length]="resultsLength"  [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div>
+    <div  *ngIf="lineasDeAyudas" style="height: 200px; overflow-y: scroll; overflow-x: hidden;">
+        <div  *ngFor="let lineaDeAyuda of lineasDeAyudas">
+            <div class="row">
+                <mat-form-field class="col-lg-6"appearance="fill" >
+                    <mat-label>Nombre Producto</mat-label>
+                <input matInput disabled [(ngModel)]="lineaDeAyuda.producto.nombre">
+                </mat-form-field>
+                <mat-form-field class="col-lg-6"appearance="fill" >
+                    <mat-label>Tipo</mat-label>
+                    <input matInput disabled [(ngModel)]="lineaDeAyuda.producto.tipo">
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field class="col-lg-4"appearance="fill" >
+                    <mat-label>Cantidad</mat-label>
+                    <input matInput disabled [(ngModel)]="lineaDeAyuda.porciones">
+                </mat-form-field>
+                <mat-form-field class="col-lg-4"appearance="fill" >
+                    <mat-label>Porcion Por Persona</mat-label>
+                    <input matInput disabled [(ngModel)]="lineaDeAyuda.producto.porcionPorPersona">
+                </mat-form-field>
+                <mat-form-field class="col-lg-4"appearance="fill" >
+                    <mat-label>Precio/Unidad</mat-label>
+                    <input matInput disabled [(ngModel)]="lineaDeAyuda.producto.precio">
+                </mat-form-field>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div *ngIf="!lineasDeAyudas">
+        <mat-progress-bar mode="buffer"></mat-progress-bar>
+    </div>
+</div>

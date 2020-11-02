@@ -1,0 +1,93 @@
+<mat-toolbar color="primary" style="padding-top: 120px;-webkit-box-shadow: inset 0px 32px 41px 0px rgba(0,0,0,0.23);
+-moz-box-shadow: inset 0px 32px 41px 0px rgba(0,0,0,0.23);
+box-shadow: inset 0px 32px 41px 0px rgba(0,0,0,0.23);">
+  <span style="margin-top: -55px; padding-left: 45%;">Form Producto</span>
+</mat-toolbar>
+<div class="container m-auto">
+    <div class="card mt-3 p-4 mat-elevation-z8" style="background-color:#303030; color: white;">
+        <div class="row">
+            <mat-form-field class="col-lg-6"appearance="fill" >
+                <mat-label>Nombre Producto</mat-label>
+                <input matInput [(ngModel)]="producto.nombre" [formControl]="nombreFormControl" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="nombreFormControl.hasError('minlength')">
+                     Longitud minima <strong>mayor a 1 digitos*</strong>
+                </mat-error>
+                <mat-error *ngIf="nombreFormControl.hasError('required')">
+                    Nombre Producto es <strong>obligatorio*</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-lg-6"appearance="fill" >
+                <mat-label>Tipo</mat-label>
+                <mat-select [(ngModel)]="producto.tipo"[formControl]="tipoFormControl" [errorStateMatcher]="matcher">
+                    <mat-option value="Lacteo">Lacteo</mat-option>
+                    <mat-option value="Conserva">Conserva</mat-option>
+                    <mat-option value="Harina">Harina</mat-option>
+                    <mat-option value="Menestra">Menestra</mat-option>
+                    <mat-option value="Cereal">Cereal</mat-option>
+                    <mat-option value="Aceite">Aceite</mat-option>
+                    <mat-option value="Azucar">Azucar</mat-option>
+                    <mat-option value="Chocolate">Chocolate</mat-option>
+                </mat-select>
+                <mat-error *ngIf="tipoFormControl.hasError('required')">
+                    Tipo es <strong>obligatorio*</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-lg-6"appearance="fill" >
+                <mat-label>Porcion</mat-label>
+                <input matInput type="number" [(ngModel)]="producto.porcionPorPersona" [formControl]="porcionFormControl" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="porcionFormControl.hasError('minlength') && !porcionFormControl.hasError('pattern')">
+                     Longitud minima <strong>mayor a 1 digitos*</strong>
+                </mat-error>
+                <mat-error *ngIf="porcionFormControl.hasError('pattern') && !porcionFormControl.hasError('required')">
+                    Porcion es <strong>solo numeros*</strong>
+                </mat-error>
+                <mat-error *ngIf="porcionFormControl.hasError('required')">
+                    Porcion es <strong>solo numeros*</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-lg-6"appearance="fill" >
+                <mat-label>Precio/Unidad</mat-label>
+                <input matInput type="number" [(ngModel)]="producto.precio" [formControl]="precioUnidadFormControl" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="precioUnidadFormControl.hasError('minlength') && !precioUnidadFormControl.hasError('pattern')">
+                     Longitud minima <strong>mayor a 2 digitos*</strong>
+                </mat-error>
+                <mat-error *ngIf="precioUnidadFormControl.hasError('pattern') && !precioUnidadFormControl.hasError('required')">
+                    Precio/Unidad es <strong>solo numeros*</strong>
+                </mat-error>
+                <mat-error *ngIf="precioUnidadFormControl.hasError('required')">
+                    Precio/Unidad es <strong>solo numeros*</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-lg-6"appearance="fill" >
+                <mat-label>Marca</mat-label>
+                <input matInput [(ngModel)]="producto.marca" [formControl]="marcaFormControl" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="marcaFormControl.hasError('minlength')">
+                     Longitud minima <strong>mayor a 1 digitos*</strong>
+                </mat-error>
+                <mat-error *ngIf="marcaFormControl.hasError('required')">
+                    Nombre Producto es <strong>obligatorio*</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-lg-6"appearance="fill" >
+                <mat-label>Stock</mat-label>
+                <input matInput type="number" [(ngModel)]="producto.stock" [formControl]="stockFormControl" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="stockFormControl.hasError('minlength') && !stockFormControl.hasError('pattern')">
+                     Longitud minima <strong>mayor a 2 digitos*</strong>
+                </mat-error>
+                <mat-error *ngIf="stockFormControl.hasError('pattern') && !stockFormControl.hasError('required')">
+                    Precio/Unidad es <strong>solo numeros*</strong>
+                </mat-error>
+                <mat-error *ngIf="stockFormControl.hasError('required')">
+                    Precio/Unidad es <strong>solo numeros y mayor a 2 digitos*</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="row"> 
+            <!--Enviar-->
+            <button mat-raised-button (click)="save()" color="primary" class="mb-3 m-auto" style="height: 50%; width: 50%;" type="button">
+                <a>Guardar</a>
+            </button>
+            <!--Termina Enviar-->
+        </div>
+    </div>
+</div>

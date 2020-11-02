@@ -1,0 +1,334 @@
+<mat-toolbar color="primary" style="padding-top: 120px;-webkit-box-shadow: inset 0px 32px 41px 0px rgba(0,0,0,0.23);
+-moz-box-shadow: inset 0px 32px 41px 0px rgba(0,0,0,0.23);
+box-shadow: inset 0px 32px 41px 0px rgba(0,0,0,0.23);">
+  <span style="margin-top: -55px; padding-left: 45%;">Form Institucion</span>
+</mat-toolbar>
+<div class="container m-auto">
+    <div class="card mt-3 p-4 mat-elevation-z8" style="background-color:#303030; color: white;">
+        <div class="row mb-2">
+            <mat-form-field class="col-lg-6"appearance="fill" >
+                <mat-label>Numero</mat-label>
+                <input matInput [(ngModel)]="institucion.numero" [formControl]="numeroFormControl" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="numeroFormControl.hasError('minlength') && !numeroFormControl.hasError('pattern')">
+                     Longitud minima <strong>mayor a 3 digitos*</strong>
+                </mat-error>
+                <mat-error *ngIf="numeroFormControl.hasError('pattern') && !numeroFormControl.hasError('required')">
+                      Numero es <strong>solo numeros*</strong>
+                </mat-error>
+                <mat-error *ngIf="numeroFormControl.hasError('required')">
+                     Numero es <strong>obligatorio*</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-lg-6"appearance="fill" >
+                <mat-label>Nombre</mat-label>
+                <input matInput [(ngModel)]="institucion.nombre" [formControl]="nombreFormControl" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="nombreFormControl.hasError('minlength') && !nombreFormControl.hasError('pattern')">
+                     Longitud minima <strong> mayor a 5 caracteres*</strong>
+                </mat-error>
+                <mat-error *ngIf="nombreFormControl.hasError('required')">
+                    Nombre es <strong>obligatorio*</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="row mb-2">
+            <mat-form-field class="col-lg-6"appearance="fill" >
+                <mat-label>Nro de Alumnos</mat-label>
+                <input matInput [(ngModel)]="institucion.nroDeAlumnos" [formControl]="nroDeAlumnosFormControl" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="nroDeAlumnosFormControl.hasError('minlength') && !nroDeAlumnosFormControl.hasError('pattern')">
+                    Longitud minima <strong> mayor a 3 digitos*</strong>
+                </mat-error>
+                <mat-error *ngIf="nroDeAlumnosFormControl.hasError('pattern') && !nroDeAlumnosFormControl.hasError('required')">
+                    Nro de Alumnos es <strong>solo numeros*</strong>
+                </mat-error>
+                <mat-error *ngIf="nroDeAlumnosFormControl.hasError('required')">
+                    Nro de Alumnos es <strong>obligatorio*</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-lg-6"appearance="fill" >
+                <mat-label>Nivel</mat-label>           
+                <mat-select [(ngModel)]="institucion.nivel" [formControl]="nivelFormControl" [errorStateMatcher]="matcher">
+                    <mat-option value="Inicial">Inicial</mat-option>
+                    <mat-option value="Inicial-Primaria">Inicial-Primaria</mat-option>
+                    <mat-option value="Primaria">Primaria</mat-option>
+                    <mat-option value="Primaria-Secundaria">Primaria-Secundaria</mat-option>
+                    <mat-option value="Secundaria">Secundaria</mat-option>
+                    <mat-option value="Inicial-Primaria-Secundaria">Inicial-Primaria-Secundaria</mat-option>
+                </mat-select> 
+                <mat-error *ngIf="!nivelFormControl.hasError('required')">
+                    Nivel es <strong>obligatorio*</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="row mb-2">
+            <mat-form-field  class="col-lg-4" appearance="fill">
+                <mat-label>Departamento</mat-label>
+                <mat-select [(ngModel)]="Departamento" (selectionChange)="switchDepartamento()" > 
+                <mat-option value="0"> Amazonas</mat-option>
+                <mat-option value="1"> Ancash</mat-option>
+                <mat-option value="2"> Apurímac</mat-option>
+                <mat-option value="3"> Arequipa</mat-option>
+                <mat-option value="4"> Ayacucho</mat-option>
+                <mat-option value="5"> Cajamarca</mat-option>
+                <mat-option value="6"> Cusco</mat-option>
+                <mat-option value="7"> Huancavelica</mat-option>
+                <mat-option value="8"> Huánuco</mat-option>
+                <mat-option value="9"> Ica</mat-option>
+                <mat-option value="10"> Junín</mat-option>
+                <mat-option value="11"> La Libertad</mat-option>
+                <mat-option value="12"> Lambayeque</mat-option>
+                <mat-option value="13"> Lima</mat-option>
+                <mat-option value="14"> Loreto</mat-option>
+                <mat-option value="15"> Madre de Dios</mat-option>
+                <mat-option value="16"> Moquegua</mat-option>
+                <mat-option value="17"> Pasco</mat-option>
+                <mat-option value="18"> Piura</mat-option>
+                <mat-option value="19"> Puno</mat-option>
+                <mat-option value="20"> San Martín</mat-option>
+                <mat-option value="21"> Tacna</mat-option>
+                <mat-option value="22"> Tumbes</mat-option>
+                <mat-option value="23"> Ucayali</mat-option> 
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field  class="col-lg-4" appearance="fill">
+                <mat-label>Provincia</mat-label>
+                <mat-select [(ngModel)]="institucion.lugar.provincia" required>  
+                <!--AMAZONAS-->
+                <mat-option *ngIf="Departamento == '0'" value="Chachapoyas">Chachapoyas</mat-option>
+                <mat-option  *ngIf="Departamento == '0'" value="Bagua">Bagua</mat-option>
+                <mat-option  *ngIf="Departamento == '0'" value="Condorcanqui">Condorcanqui</mat-option>
+                <mat-option  *ngIf="Departamento == '0'" value="Luya">Luya</mat-option>
+                <mat-option  *ngIf="Departamento == '0'" value="Rodríguez de Mendoza">Rodríguez de Mendoza</mat-option>
+                <mat-option  *ngIf="Departamento == '0'" value="Utcubamba">Utcubamba</mat-option>
+                <!--ANCASH-->
+                <mat-option  *ngIf="Departamento == '1'" value="Huaraz">Huaraz</mat-option>
+                <mat-option  *ngIf="Departamento == '1'" value="Aija">Aija</mat-option>
+                <mat-option  *ngIf="Departamento == '1'" value="Antonio Raimondi">Antonio Raimondi</mat-option>
+                <mat-option  *ngIf="Departamento == '1'" value="Asunción">Asunción</mat-option>
+                <mat-option  *ngIf="Departamento == '1'" value="Bolognesi">Bolognesi</mat-option>
+                <mat-option  *ngIf="Departamento == '1'" value="Carhuaz">Carhuaz</mat-option>
+                <mat-option  *ngIf="Departamento == '1'" value="Carlos Fermín Fitzcarrald">Carlos Fermín Fitzcarrald</mat-option>
+                <mat-option  *ngIf="Departamento == '1'" value="Casma">Casma</mat-option>
+                <mat-option  *ngIf="Departamento == '1'" value="Corongo">Corongo</mat-option>
+                <mat-option  *ngIf="Departamento == '1'" value="Huari">Huari</mat-option>
+                <mat-option  *ngIf="Departamento == '1'" value="Huarmey">Huarmey</mat-option>
+                <mat-option  *ngIf="Departamento == '1'" value="Huaylas">Huaylas</mat-option>
+                <mat-option  *ngIf="Departamento == '1'" value="Mariscal Luzuriaga">Mariscal Luzuriaga</mat-option>
+                <mat-option  *ngIf="Departamento == '1'" value="Ocros">Ocros</mat-option>
+                <mat-option  *ngIf="Departamento == '1'" value="Pallasca">Pallasca</mat-option>
+                <mat-option  *ngIf="Departamento == '1'" value="Pomabamba">Pomabamba</mat-option>
+                <mat-option  *ngIf="Departamento == '1'" value="Recuay">Recuay</mat-option>
+                <mat-option  *ngIf="Departamento == '1'" value="Santa">Santa</mat-option>
+                <mat-option  *ngIf="Departamento == '1'" value="Sihuas">Sihuas</mat-option>
+                <mat-option  *ngIf="Departamento == '1'" value="Yungay">Yungay</mat-option>
+                <!--APURIMAC-->
+                <mat-option  *ngIf="Departamento == '2'" value="Abancay">Abancay</mat-option>
+                <mat-option  *ngIf="Departamento == '2'" value="Andahuaylas">Andahuaylas</mat-option>
+                <mat-option  *ngIf="Departamento == '2'" value="Antabamba">Antabamba</mat-option>
+                <mat-option  *ngIf="Departamento == '2'" value="Aymaraes">Aymaraes</mat-option>
+                <mat-option  *ngIf="Departamento == '2'" value="Cotabambas">Cotabambas</mat-option>
+                <mat-option  *ngIf="Departamento == '2'" value="Chincheros">Chincheros</mat-option>
+                <mat-option  *ngIf="Departamento == '2'" value="Grau">Grau</mat-option>
+                <!--AREQUIPA-->
+                <mat-option  *ngIf="Departamento == '3'" value="Arequipa">Arequipa</mat-option>
+                <mat-option  *ngIf="Departamento == '3'" value="Camaná">Camaná</mat-option>
+                <mat-option  *ngIf="Departamento == '3'" value="Caravelí">Caravelí</mat-option>
+                <mat-option  *ngIf="Departamento == '3'" value="Castilla">Castilla</mat-option>
+                <mat-option  *ngIf="Departamento == '3'" value="Caylloma">Caylloma</mat-option>
+                <mat-option  *ngIf="Departamento == '3'" value="Condesuyos">Condesuyos</mat-option>
+                <mat-option  *ngIf="Departamento == '3'" value="Islay">Islay</mat-option>
+                <mat-option  *ngIf="Departamento == '3'" value="La Unión">La Unión</mat-option>
+                <!--AYACUCHO-->
+                <mat-option  *ngIf="Departamento == '4'" value="Huamanga">Huamanga</mat-option>
+                <mat-option  *ngIf="Departamento == '4'" value="Cangallo">Cangallo</mat-option>
+                <mat-option  *ngIf="Departamento == '4'" value="Huanca Sancos">Huanca Sancos</mat-option>
+                <mat-option  *ngIf="Departamento == '4'" value="Huanta">Huanta</mat-option>
+                <mat-option  *ngIf="Departamento == '4'" value="La Mar">La Mar</mat-option>
+                <mat-option  *ngIf="Departamento == '4'" value="Lucanas">Lucanas</mat-option>
+                <mat-option  *ngIf="Departamento == '4'" value="Parinacochas">Parinacochas</mat-option>
+                <mat-option  *ngIf="Departamento == '4'" value="Páucar del Sara Sara">Páucar del Sara Sara</mat-option>
+                <mat-option  *ngIf="Departamento == '4'" value="Sucre">Sucre</mat-option>
+                <mat-option  *ngIf="Departamento == '4'" value="Víctor Fajardo">Víctor Fajardo</mat-option>
+                <mat-option  *ngIf="Departamento == '4'" value="Vilcashuamán">Vilcashuamán</mat-option>
+                <!--CAJAMARCA-->
+                <mat-option  *ngIf="Departamento == '5'" value="Cajamarca">Cajamarca</mat-option>
+                <mat-option  *ngIf="Departamento == '5'" value="Cajabamba">Cajabamba</mat-option>
+                <mat-option  *ngIf="Departamento == '5'" value="Celendín">Celendín</mat-option>
+                <mat-option  *ngIf="Departamento == '5'" value="Chota">Chota</mat-option>
+                <mat-option  *ngIf="Departamento == '5'" value="Contumaza">Contumaza</mat-option>
+                <mat-option  *ngIf="Departamento == '5'" value="Cutervo">Cutervo</mat-option>
+                <mat-option  *ngIf="Departamento == '5'" value="Hualgayoc">Hualgayoc</mat-option>
+                <mat-option  *ngIf="Departamento == '5'" value="Jaén">Jaén</mat-option>
+                <mat-option  *ngIf="Departamento == '5'" value="San Ignacio">San Ignacio</mat-option>
+                <mat-option  *ngIf="Departamento == '5'" value="San Marcos">San Marcos</mat-option>
+                <mat-option  *ngIf="Departamento == '5'" value="Bongara">Bongara</mat-option>
+                <mat-option  *ngIf="Departamento == '5'" value="Bongara">Bongara</mat-option>
+                <mat-option  *ngIf="Departamento == '5'" value="Bongara">Bongara</mat-option>
+                <!--CUSCO--> 
+                <mat-option  *ngIf="Departamento == '6'" value="Cuzco">Cuzco</mat-option>
+                <mat-option  *ngIf="Departamento == '6'" value="Acomayo">Acomayo</mat-option>
+                <mat-option  *ngIf="Departamento == '6'" value="Anta">Anta</mat-option>
+                <mat-option  *ngIf="Departamento == '6'" value="Calca">Calca</mat-option>
+                <mat-option  *ngIf="Departamento == '6'" value="Canas">Canas</mat-option>
+                <mat-option  *ngIf="Departamento == '6'" value="Canchis">Canchis</mat-option>
+                <mat-option  *ngIf="Departamento == '6'" value="Chumbivilcas">Chumbivilcas</mat-option>
+                <mat-option  *ngIf="Departamento == '6'" value="Espinar">Espinar</mat-option>
+                <mat-option  *ngIf="Departamento == '6'" value="La Convención">La Convención</mat-option>
+                <mat-option  *ngIf="Departamento == '6'" value="Paruro">Paruro</mat-option>
+                <mat-option  *ngIf="Departamento == '6'" value="Paucartambo">Paucartambo</mat-option>
+                <mat-option  *ngIf="Departamento == '6'" value="Quispicanchi">Quispicanchi</mat-option>
+                <mat-option  *ngIf="Departamento == '6'" value="Urubamba">Urubamba</mat-option>
+                <!--HUANCAVELICA-->
+                <mat-option  *ngIf="Departamento == '7'" value="Huancavelica">Huancavelica</mat-option>
+                <mat-option  *ngIf="Departamento == '7'" value="Acobamba">Acobamba</mat-option>
+                <mat-option  *ngIf="Departamento == '7'" value="Angaraes">Angaraes</mat-option>
+                <mat-option  *ngIf="Departamento == '7'" value="Castrovirreyna">Castrovirreyna</mat-option>
+                <mat-option  *ngIf="Departamento == '7'" value="Churcampa">Churcampa</mat-option>
+                <mat-option  *ngIf="Departamento == '7'" value="Huaytará">Huaytará</mat-option>
+                <mat-option  *ngIf="Departamento == '7'" value="Tayacaja">Tayacaja</mat-option>
+                <!--HUANUCO--> 
+                <mat-option  *ngIf="Departamento == '8'" value="Huánuco">Huánuco</mat-option> 
+                <mat-option  *ngIf="Departamento == '8'" value="Ambo">Ambo</mat-option> 
+                <mat-option  *ngIf="Departamento == '8'" value="Dos de Mayo">Dos de Mayo</mat-option> 
+                <mat-option  *ngIf="Departamento == '8'" value="Huacaybamba">Huacaybamba</mat-option> 
+                <mat-option  *ngIf="Departamento == '8'" value="Huamalíes">Huamalíes</mat-option> 
+                <mat-option  *ngIf="Departamento == '8'" value="Leoncio Prado">Leoncio Prado</mat-option> 
+                <mat-option  *ngIf="Departamento == '8'" value="Marañón">Marañón</mat-option> 
+                <mat-option  *ngIf="Departamento == '8'" value="Pachitea">Pachitea</mat-option> 
+                <mat-option  *ngIf="Departamento == '8'" value="Puerto Inca">Puerto Inca</mat-option> 
+                <mat-option  *ngIf="Departamento == '8'" value="Lauricocha">Lauricocha</mat-option> 
+                <mat-option  *ngIf="Departamento == '8'" value="Yarowilca">Yarowilca</mat-option> 
+                <!--ICA-->
+                <mat-option  *ngIf="Departamento == '9'" value="Ica">Ica</mat-option> 
+                <mat-option  *ngIf="Departamento == '9'" value="Chincha">Chincha</mat-option> 
+                <mat-option  *ngIf="Departamento == '9'" value="Nazca">Nazca</mat-option> 
+                <mat-option  *ngIf="Departamento == '9'" value="Palpa">Palpa</mat-option> 
+                <mat-option  *ngIf="Departamento == '9'" value="Pisco">Pisco</mat-option>  
+                <!--JUNIN-->
+                <mat-option  *ngIf="Departamento == '10'" value="Huancayo">Huancayo</mat-option> 
+                <mat-option  *ngIf="Departamento == '10'" value="Chanchamayo">Chanchamayo</mat-option> 
+                <mat-option  *ngIf="Departamento == '10'" value="Chupaca">Chupaca</mat-option> 
+                <mat-option  *ngIf="Departamento == '10'" value="Concepción">Concepción</mat-option> 
+                <mat-option  *ngIf="Departamento == '10'" value="Jauja">Jauja</mat-option> 
+                <mat-option  *ngIf="Departamento == '10'" value="Junín">Junín</mat-option> 
+                <mat-option  *ngIf="Departamento == '10'" value="Satipo">Satipo</mat-option> 
+                <mat-option  *ngIf="Departamento == '10'" value="Tarma">Tarma</mat-option> 
+                <mat-option  *ngIf="Departamento == '10'" value="Yauli">Yauli</mat-option> 
+                <!--LA LIBERTAD-->
+                <mat-option  *ngIf="Departamento == '11'" value="Virú">Virú</mat-option> 
+                <mat-option  *ngIf="Departamento == '11'" value="Trujillo">Trujillo</mat-option> 
+                <mat-option  *ngIf="Departamento == '11'" value="Ascope">Ascope</mat-option> 
+                <mat-option  *ngIf="Departamento == '11'" value="Bolívar">Bolívar</mat-option> 
+                <mat-option  *ngIf="Departamento == '11'" value="Chepén">Chepén</mat-option> 
+                <mat-option  *ngIf="Departamento == '11'" value="Gran Chimú">Gran Chimú</mat-option> 
+                <mat-option  *ngIf="Departamento == '11'" value="Julcán">Julcán</mat-option> 
+                <mat-option  *ngIf="Departamento == '11'" value="Otuzco">Otuzco</mat-option> 
+                <mat-option  *ngIf="Departamento == '11'" value="Pacasmayo">Pacasmayo</mat-option> 
+                <mat-option  *ngIf="Departamento == '11'" value="Pataz">Pataz</mat-option> 
+                <mat-option  *ngIf="Departamento == '11'" value="Sánchez Carrión">Sánchez Carrión</mat-option> 
+                <mat-option  *ngIf="Departamento == '11'" value="Santiago de Chuco">Santiago de Chuco</mat-option> 
+                <!--LAMBAYEQUE-->
+                <mat-option  *ngIf="Departamento == '12'" value="Chiclayo">Chiclayo</mat-option> 
+                <mat-option  *ngIf="Departamento == '12'" value="Ferreñafe">Ferreñafe</mat-option> 
+                <mat-option  *ngIf="Departamento == '12'" value="Lambayeque">Lambayeque</mat-option> 
+                <!--LIMA-->
+                <mat-option  *ngIf="Departamento == '13'" value="Lima">Lima</mat-option>
+                <mat-option  *ngIf="Departamento == '13'" value="Barranca">Barranca</mat-option> 
+                <mat-option  *ngIf="Departamento == '13'" value="Cajatambo">Cajatambo</mat-option> 
+                <mat-option  *ngIf="Departamento == '13'" value="Canta">Canta</mat-option> 
+                <mat-option  *ngIf="Departamento == '13'" value="Cañete">Cañete</mat-option> 
+                <mat-option  *ngIf="Departamento == '13'" value="Huaral">Huaral</mat-option> 
+                <mat-option  *ngIf="Departamento == '13'" value="Huarochirí">Huarochirí</mat-option> 
+                <mat-option  *ngIf="Departamento == '13'" value="Huaura">Huaura</mat-option> 
+                <mat-option  *ngIf="Departamento == '13'" value="Oyón">Oyón</mat-option> 
+                <mat-option  *ngIf="Departamento == '13'" value="Yauyos">Yauyos</mat-option> 
+                <!--LORETO-->
+                <mat-option  *ngIf="Departamento == '14'" value="Maynas">Maynas</mat-option> 
+                <mat-option  *ngIf="Departamento == '14'" value="Alto Amazonas">Alto Amazonas</mat-option> 
+                <mat-option  *ngIf="Departamento == '14'" value="Datem del Marañón">Datem del Marañón</mat-option> 
+                <mat-option  *ngIf="Departamento == '14'" value="Loreto">Loreto</mat-option> 
+                <mat-option  *ngIf="Departamento == '14'" value="Mariscal Ramón Castilla">Mariscal Ramón Castilla</mat-option> 
+                <mat-option  *ngIf="Departamento == '14'" value="Putumayo">Putumayo</mat-option> 
+                <mat-option  *ngIf="Departamento == '14'" value="Requena">Requena</mat-option> 
+                <mat-option  *ngIf="Departamento == '14'" value="Ucayali">Ucayali</mat-option> 
+                <!--MADRE DE DIOS-->
+                <mat-option  *ngIf="Departamento == '15'" value="Tambopata">Tambopata</mat-option> 
+                <mat-option  *ngIf="Departamento == '15'" value="Manu">Manu</mat-option> 
+                <mat-option  *ngIf="Departamento == '15'" value="Tahuamanu">Tahuamanu</mat-option> 
+                <!--MOQUEGUA-->
+                <mat-option  *ngIf="Departamento == '16'" value="Mariscal Nieto">Mariscal Nieto</mat-option> 
+                <mat-option  *ngIf="Departamento == '16'" value="General Sánchez Cerro">General Sánchez Cerro</mat-option> 
+                <mat-option  *ngIf="Departamento == '16'" value="Ilo">Ilo</mat-option> 
+                <!--PASCO-->
+                <mat-option  *ngIf="Departamento == '17'" value="Pasco">Pasco</mat-option> 
+                <mat-option  *ngIf="Departamento == '17'" value="Daniel Alcides Carrión">Daniel Alcides Carrión</mat-option> 
+                <mat-option  *ngIf="Departamento == '17'" value="Oxapampa">Oxapampa</mat-option> 
+                <!--PIURA-->
+                <mat-option  *ngIf="Departamento == '18'" value="Piura">Piura</mat-option> 
+                <mat-option  *ngIf="Departamento == '18'" value="Ayabaca">Ayabaca</mat-option> 
+                <mat-option  *ngIf="Departamento == '18'" value="Huancabamba">Huancabamba</mat-option> 
+                <mat-option  *ngIf="Departamento == '18'" value="Morropón">Morropón</mat-option> 
+                <mat-option  *ngIf="Departamento == '18'" value="Paita">Paita</mat-option> 
+                <mat-option  *ngIf="Departamento == '18'" value="Sechura">Sechura</mat-option> 
+                <mat-option  *ngIf="Departamento == '18'" value="Sullana">Sullana</mat-option> 
+                <mat-option  *ngIf="Departamento == '18'" value="Talara">Talara</mat-option> 
+                <!--PUNO-->
+                <mat-option  *ngIf="Departamento == '19'" value="Puno">Puno</mat-option> 
+                <mat-option  *ngIf="Departamento == '19'" value="Azángaro">Azángaro</mat-option> 
+                <mat-option  *ngIf="Departamento == '19'" value="Carabaya">Carabaya</mat-option> 
+                <mat-option  *ngIf="Departamento == '19'" value="Chucuito">Chucuito</mat-option> 
+                <mat-option  *ngIf="Departamento == '19'" value="El Collao">El Collao</mat-option> 
+                <mat-option  *ngIf="Departamento == '19'" value="Huancané">Huancané</mat-option> 
+                <mat-option  *ngIf="Departamento == '19'" value="Lampa">Lampa</mat-option> 
+                <mat-option  *ngIf="Departamento == '19'" value="Melgar">Melgar</mat-option> 
+                <mat-option  *ngIf="Departamento == '19'" value="Moho">Moho</mat-option> 
+                <mat-option  *ngIf="Departamento == '19'" value="San Antonio de Putina">San Antonio de Putina</mat-option> 
+                <mat-option  *ngIf="Departamento == '19'" value="San Román">San Román</mat-option> 
+                <mat-option  *ngIf="Departamento == '19'" value="Sandia">Sandia</mat-option> 
+                <mat-option  *ngIf="Departamento == '19'" value="Yunguyo">Yunguyo</mat-option> 
+                <!--SAN MARTIN-->
+                <mat-option  *ngIf="Departamento == '20'" value="Moyobamba">Moyobamba</mat-option> 
+                <mat-option  *ngIf="Departamento == '20'" value="Bellavista">Bellavista</mat-option> 
+                <mat-option  *ngIf="Departamento == '20'" value="El Dorado">El Dorado</mat-option> 
+                <mat-option  *ngIf="Departamento == '20'" value="Huallaga">Huallaga</mat-option> 
+                <mat-option  *ngIf="Departamento == '20'" value="Lamas">Lamas</mat-option> 
+                <mat-option  *ngIf="Departamento == '20'" value="Mariscal Cáceres">Mariscal Cáceres</mat-option> 
+                <mat-option  *ngIf="Departamento == '20'" value="Picota">Picota</mat-option> 
+                <mat-option  *ngIf="Departamento == '20'" value="Rioja">Rioja</mat-option> 
+                <mat-option  *ngIf="Departamento == '20'" value="San Martín">San Martín</mat-option> 
+                <mat-option  *ngIf="Departamento == '20'" value="Tocache">Tocache</mat-option> 
+                <!--TACNA-->
+                <mat-option  *ngIf="Departamento == '21'" value="Tacna">Tacna</mat-option> 
+                <mat-option  *ngIf="Departamento == '21'" value="Candarave">Candarave</mat-option>
+                <mat-option  *ngIf="Departamento == '21'" value="Jorge Basadre">Jorge Basadre</mat-option>
+                <mat-option  *ngIf="Departamento == '21'" value="Tarata">Tarata</mat-option>
+                <!--TUMBES-->
+                <mat-option  *ngIf="Departamento == '22'" value="Tumbes">Tumbes</mat-option>
+                <mat-option  *ngIf="Departamento == '22'" value="Contralmirante Villar">Contralmirante Villar</mat-option>
+                <mat-option  *ngIf="Departamento == '22'" value="Zarumilla">Zarumilla</mat-option>
+                <!--UCAYALI-->
+                <mat-option  *ngIf="Departamento == '23'" value="Coronel Portillo">Coronel Portillo</mat-option>
+                <mat-option  *ngIf="Departamento == '23'" value="Atalaya">Atalaya</mat-option>
+                <mat-option  *ngIf="Departamento == '23'" value="Padre Abad">Padre Abad</mat-option>
+                <mat-option  *ngIf="Departamento == '23'" value="Purús">Purús</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field  class="col-lg-4" appearance="fill">
+                <mat-label for="distrito" class="col-form-label ">Distrito</mat-label>
+                <input matInput type="text" [(ngModel)]="institucion.lugar.distrito" name="distrito">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field  class="col-lg-12" appearance="fill">
+                <mat-label for="direccion" class="col-form-label ">Direccion</mat-label>
+                <input matInput type="text" [(ngModel)]="institucion.lugar.direccion" name="direccion" required>
+            </mat-form-field>
+        </div>
+        <div class="row"> 
+            <!--Enviar-->
+            <button mat-raised-button (click)="save()"color="primary" class="mb-3 m-auto" style="height: 50%; width: 50%;" type="button">
+                <a>Guardar</a>
+            </button>
+            <!--Termina Enviar-->
+        </div>
+    </div>
+</div>

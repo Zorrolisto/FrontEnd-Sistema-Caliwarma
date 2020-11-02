@@ -1,0 +1,17 @@
+<div class="card mt-3 mb-3 p-4 mat-elevation-z8" style="background-color:#303030; color: white;">
+    <div class="text-align-center text-center">
+        <h1>Productos</h1>
+    </div>
+    
+    <!--Abrir Dialog (click)="openDialogProductos()"-->
+    <div class="">
+        <button mat-raised-button (click)="openDialogProductos()" color="primary" class="mb-3" style="float: right;" type="button">
+            <a>Agregar Producto</a>
+        </button>
+    </div>
+    <!--Termina abrir Dialog-->
+
+    <!--Mostrar Datos Institucion-->
+    <app-lineas-de-ayudas [lineasDeAyudas]="lineasDeAyudas"></app-lineas-de-ayudas>
+    <!--Termina Mostrar Datos Institucion-->
+</div>

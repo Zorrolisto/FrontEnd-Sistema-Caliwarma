@@ -1,0 +1,43 @@
+<div class="card mt-3 p-4 mat-elevation-z8 col-lg-12" style="background-color:#303030; color: white;">
+    <div *ngIf="ayuda">
+        <div class="row">
+            <mat-form-field class="col-lg-6">
+                <mat-label>ID</mat-label>
+                <input matInput disabled [(ngModel)]="ayuda.id">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="col-lg-6">
+                <mat-label>Fecha De Registro</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="ayuda.fechaDeRegistro"  disabled>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker disabled="false"></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="fill" class="col-lg-6">
+                <mat-label>Fecha De Envio</mat-label>
+                <input matInput [matDatepicker]="picker2" [(ngModel)]="ayuda.fechaDeEnvio" disabled>
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2 disabled="false"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="col-lg-6">
+                <mat-label>Fecha De Llegada</mat-label>
+                <input matInput [matDatepicker]="picker3" [(ngModel)]="ayuda.fechaDeLlegada" disabled>
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3 disabled="false"></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="fill" class="col-lg-6">
+                <mat-label>Cantidad De Niños a Alcanzar</mat-label>
+                <input matInput type="number" [(ngModel)]="ayuda.porcionesTotales" (ngModelChange)="actualizarPersonas($event)">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="col-lg-6">
+                <mat-label>Precio</mat-label>
+                <input matInput disabled [(ngModel)]="ayuda.precioTotal">
+            </mat-form-field>
+        </div>
+    </div>
+    <div *ngIf="!ayuda">
+        <mat-spinner></mat-spinner>
+    </div>
+</div>

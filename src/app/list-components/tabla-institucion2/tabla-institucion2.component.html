@@ -1,0 +1,77 @@
+<div class="pt-4">
+    <div class="example-container mat-elevation-z8">
+        <div class="example-loading-shade"
+                *ngIf="isLoadingResults || isRateLimitReached">
+            <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+            <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+            El servidor no está respondiendo.
+            </div>
+        </div>
+        <div class="example-table-container">
+            <table mat-table [dataSource]="instituciones">
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let institucion"> {{institucion.id}}</td>
+            </ng-container>
+
+            <!-- Codigo Column -->
+            <ng-container matColumnDef="numero">
+                <th mat-header-cell *matHeaderCellDef> Numero </th>
+                <td mat-cell *matCellDef="let institucion">{{institucion.numero}}</td>
+            </ng-container>
+
+            <!-- infractorDato Column -->
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let institucion">{{institucion.nombre}}</td>
+            </ng-container>
+
+            <!-- situacion Column-->
+            <ng-container matColumnDef="nroDeAlumnos">
+                <th mat-header-cell *matHeaderCellDef> # Alumnos </th>
+                <td mat-cell *matCellDef="let institucion"> {{institucion.nroDeAlumnos}}</td>
+            </ng-container>
+
+            <!-- situacion Column-->
+            <ng-container matColumnDef="nivel">
+                <th mat-header-cell *matHeaderCellDef> Nivel </th>
+                <td mat-cell *matCellDef="let institucion"> {{institucion.nivel}}</td>
+            </ng-container>
+
+            <!-- lugar Column-->
+            <ng-container matColumnDef="departamento">
+                <th mat-header-cell *matHeaderCellDef> Depart. </th>
+                <td mat-cell *matCellDef="let institucion">{{institucion.lugar.departamento}}</td>
+            </ng-container>
+
+            <!-- lugar Column-->
+            <ng-container matColumnDef="provincia">
+                <th mat-header-cell *matHeaderCellDef> Prov. </th>
+                <td mat-cell *matCellDef="let institucion">{{institucion.lugar.provincia}}</td>
+            </ng-container>
+            <!-- lugar Column-->
+            <ng-container matColumnDef="distrito">
+                <th mat-header-cell *matHeaderCellDef> Distrito </th>
+                <td mat-cell *matCellDef="let institucion">{{institucion.lugar.distrito}}</td>
+            </ng-container>
+
+            <!-- vehiculo Column -->
+            <ng-container matColumnDef="escoger">
+                <th mat-header-cell *matHeaderCellDef> 
+                    <label>Escoger</label> 
+                </th>
+                <td mat-cell *matCellDef="let institucion"> 
+                    <a (click)="enviar(institucion)" class="btn"><mat-icon >check</mat-icon></a>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+
+        <mat-paginator [length]="resultsLength"  [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+    </div>
+</div>

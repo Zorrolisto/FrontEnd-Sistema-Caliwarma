@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="col-lg-10" >
+      <h1 style="color:White; font-size:17px">Buscar por ...</h1>
+    </div>
+    <div class="col-lg-2">
+      <button mat-raised-button color="primary" *ngIf="!busqueda" style="position:relative;float:right;" type="button" (click)="iniciarBusqueda()">Iniciar Busqueda</button>
+    </div>
+</div>
+<div class="row" *ngIf="busqueda">
+    <div class="col-lg-3 m-auto">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label for="nombre" class="col-form-label ">Nombre</mat-label>
+            <input matInput type="text" [(ngModel)]="nombre"  name="nombre">
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label for="nroDeAlumnos" class="col-form-label ">Numero De Alumnos</mat-label>
+            <input matInput type="number" name="nroDeAlumnos" [(ngModel)]="nroDeAlumnos">
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label for="nivel" class="col-form-label ">Nivel</mat-label>
+            <mat-select [(ngModel)]="nivel">
+                <mat-option value="Inicial">Inicial</mat-option>
+                <mat-option value="Inicial-Primaria">Inicial-Primaria</mat-option>
+                <mat-option value="Primaria">Primaria</mat-option>
+                <mat-option value="Primaria-Secundaria">Primaria-Secundaria</mat-option>
+                <mat-option value="Secundaria">Secundaria</mat-option>
+                <mat-option value="Inicial-Primaria-Secundaria">Inicial-Primaria-Secundaria</mat-option>
+            </mat-select> 
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3 m-auto">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label for="numero" class="col-form-label ">Numero</mat-label>
+            <input matInput type="number" [(ngModel)]="numero"  name="numero">
+        </mat-form-field>
+    </div>
+</div>
+<hr *ngIf="busqueda">
+<div class="row" *ngIf="busqueda">
+    <div class="col-lg-3 m-auto">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label for="departamento" class="col-form-label ">Departamento</mat-label>
+            <input matInput type="text" [(ngModel)]="departamento"  name="departamento">
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label for="provincia" class="col-form-label ">Provincia</mat-label>
+            <input matInput type="text" name="provincia" [(ngModel)]="provincia">
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3 m-auto">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label for="distrito" class="col-form-label ">Distrito</mat-label>
+            <input matInput type="text" [(ngModel)]="distrito"  name="distrito">
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3 m-auto">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label for="direccion" class="col-form-label ">Direccion</mat-label>
+            <input matInput type="text" [(ngModel)]="direccion"  name="direccion">
+        </mat-form-field>
+    </div>
+</div>
+<div class="row" *ngIf="busqueda">
+    <div class="pt-1 m-auto">
+        <button mat-raised-button color="primary" (click)="cerrarBusqueda()">Cerrar</button>
+    </div>
+    <div class="pt-1 m-auto">
+        <button mat-raised-button color="primary" (click)="limpiarBusqueda()">Limpiar</button>
+    </div>
+    <div class="pt-1 m-auto">
+        <button mat-raised-button color="primary" (click)="Buscar()">Buscar</button>
+    </div>
+</div>

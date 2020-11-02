@@ -1,0 +1,125 @@
+<div class="row">
+    <div class="col-lg-10" >
+      <h1 style="color:White; font-size:17px">Buscar por ...</h1>
+    </div>
+    <div class="col-lg-2">
+      <button mat-raised-button color="primary" *ngIf="!busqueda" style="position:relative;float:right;" type="button" (click)="iniciarBusqueda()">Iniciar Busqueda</button>
+    </div>
+</div>
+<div class="row" *ngIf="busqueda">
+    <div class="col-lg-3 m-auto">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label for="producto" class="col-form-label ">Nombre Producto</mat-label>
+            <input matInput type="text" [(ngModel)]="nombreProducto"  name="producto">
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3 m-auto">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label for="institucion" class="col-form-label ">Nombre Institucion</mat-label>
+            <input matInput type="text" [(ngModel)]="nombreInstitucion"  name="institucion">
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label>Espeficificacion Porciones</mat-label>
+            <mat-select [(ngModel)]="porcionesEspecificacion">
+                <mat-option value="equal">Porciones iguales a</mat-option>
+                <mat-option value="less">Porciones menores a</mat-option>
+                <mat-option value="greater">Porciones mayores a</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label for="porcionesTotales" class="col-form-label ">Porciones Totales</mat-label>
+            <input matInput type="number" name="porcionesTotales" [(ngModel)]="porcionesTotales">
+        </mat-form-field>
+    </div>
+</div>
+<hr *ngIf="busqueda">
+<div class="row" *ngIf="busqueda">
+    <div class="col-lg-3">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label>Espeficificacion Precio</mat-label>
+            <mat-select [(ngModel)]="precioEspecificacion">
+                <mat-option value="equal">Precios iguales a</mat-option>
+                <mat-option value="less">Precios menores a</mat-option>
+                <mat-option value="greater">Precios mayores a</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label for="precioTotal" class="col-form-label ">Precio Total</mat-label>
+            <input matInput type="number" name="precioTotal" [(ngModel)]="precioTotal">
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+        <mat-label>Espeficificacion Fecha</mat-label>
+            <mat-select [(ngModel)]="fechaDeRegistroEspecificacion">
+                <mat-option value="equal">Fechas iguales a</mat-option>
+                <mat-option value="less">Fechas anteriores a</mat-option>
+                <mat-option value="greater">Fechas posteriores a</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3">
+        <mat-form-field appearance="outline" class="col-lg-12">
+            <mat-label>Fecha De Registro</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="fechaDeRegistro">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+</div>
+<hr *ngIf="busqueda">
+<div class="row" *ngIf="busqueda">
+    <div class="col-lg-3">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+        <mat-label>Espeficificacion Fecha</mat-label>
+            <mat-select [(ngModel)]="fechaDeEnvioEspecificacion">
+                <mat-option value="equal">Fechas iguales a</mat-option>
+                <mat-option value="less">Fechas anteriores a</mat-option>
+                <mat-option value="greater">Fechas posteriores a</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3">
+        <mat-form-field appearance="outline" class="col-lg-12">
+            <mat-label>Fecha De Envio</mat-label>
+            <input matInput [matDatepicker]="picker2" [(ngModel)]="fechaDeEnvio">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+        <mat-label>Espeficificacion Fecha</mat-label>
+            <mat-select [(ngModel)]="fechaDeLlegadaEspecificacion">
+                <mat-option value="equal">Fechas iguales a</mat-option>
+                <mat-option value="less">Fechas anteriores a</mat-option>
+                <mat-option value="greater">Fechas posteriores a</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3">
+        <mat-form-field appearance="outline" class="col-lg-12">
+            <mat-label>Fecha De Llegada</mat-label>
+            <input matInput [matDatepicker]="picker3" [(ngModel)]="fechaDeLlegada">
+            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
+        </mat-form-field>
+    </div>
+</div>
+<div class="row" *ngIf="busqueda">
+    <div class="pt-1 m-auto">
+        <button mat-raised-button color="primary" (click)="cerrarBusqueda()">Cerrar</button>
+    </div>
+    <div class="pt-1 m-auto">
+        <button mat-raised-button color="primary" (click)="limpiarBusqueda()">Limpiar</button>
+    </div>
+    <div class="pt-1 m-auto">
+        <button mat-raised-button color="primary" (click)="Buscar()">Buscar</button>
+    </div>
+</div>

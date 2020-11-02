@@ -1,0 +1,33 @@
+<mat-toolbar color="primary" style="padding-top: 120px;-webkit-box-shadow: inset 0px 32px 41px 0px rgba(0,0,0,0.23);
+-moz-box-shadow: inset 0px 32px 41px 0px rgba(0,0,0,0.23);
+box-shadow: inset 0px 32px 41px 0px rgba(0,0,0,0.23);">
+  <span style="margin-top: -55px; padding-left: 45%;">Ayudas</span>
+</mat-toolbar>
+<div class="container m-auto">
+    <!---Buscar-->
+    <div class="card mt-3 p-4 mat-elevation-z8" style="background-color:#303030; color: white;">
+       <app-buscar-ayuda (propagar)="Buscar($event)"></app-buscar-ayuda>
+    </div>
+    <!--Tabla-->
+    <div class="card mt-3 p-4 mat-elevation-z8" style="background-color:#303030; color: white;">
+      <div class="" style="text-align: end;">
+        <button mat-raised-button *ngIf="usuario!=null && (usuario.roles[0].authority=='ROLE_EMPLEADO' || usuario.roles[0].authority=='ROLE_ADMIN')" [routerLink]="['/hello/form/ayuda']" color="primary" class="mb-3 m-auto" style="height: 15%; width: 15%;" type="button">
+            <a>Nueva ayuda</a>
+        </button>
+      </div>
+        <app-tabla-ayuda
+        [nombreProducto]="nombreProducto"
+        [nombreInstitucion]="nombreInstitucion"
+        [porcionesEspecificacion]="porcionesEspecificacion"
+        [porcionesTotales]="porcionesTotales"
+        [precioEspecificacion]="precioEspecificacion"
+        [precioTotal]="precioTotal"
+        [fechaDeRegistroEspecificacion]="fechaDeRegistroEspecificacion"
+        [fechaDeRegistro]="fechaDeRegistro"
+        [fechaDeEnvioEspecificacion]="fechaDeEnvioEspecificacion"
+        [fechaDeEnvio]="fechaDeEnvio"
+        [fechaDeLlegadaEspecificacion]="fechaDeLlegadaEspecificacion"
+        [fechaDeLlegada]="fechaDeLlegada"
+        ></app-tabla-ayuda>
+    </div>
+</div>

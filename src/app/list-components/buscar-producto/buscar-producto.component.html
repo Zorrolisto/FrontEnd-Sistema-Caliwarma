@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-lg-10" >
+      <h1 style="color:White; font-size:17px">Buscar por ...</h1>
+    </div>
+    <div class="col-lg-2">
+      <button mat-raised-button color="primary" *ngIf="!busqueda" style="position:relative;float:right;" type="button" (click)="iniciarBusqueda()">Iniciar Busqueda</button>
+    </div>
+</div>
+<div class="row" *ngIf="busqueda">
+    <div class="col-lg-3 m-auto">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label for="nombre" class="col-form-label ">Nombre</mat-label>
+            <input matInput type="text" [(ngModel)]="nombre"  name="nombre">
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3 m-auto">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label for="marca" class="col-form-label ">Marca</mat-label>
+            <input matInput type="text" [(ngModel)]="marca"  name="marca">
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3 m-auto">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label>Tipo</mat-label>
+            <mat-select [(ngModel)]="tipo">
+                <mat-option value="Lacteo">Lacteo</mat-option>
+                <mat-option value="Conserva">Conserva</mat-option>
+                <mat-option value="Harina">Harina</mat-option>
+                <mat-option value="Menestra">Menestra</mat-option>
+                <mat-option value="Cereal">Cereal</mat-option>
+                <mat-option value="Aceite">Aceite</mat-option>
+                <mat-option value="Azucar">Azucar</mat-option>
+                <mat-option value="Chocolate">Chocolate</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3 m-auto">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label for="porcionPorPersona" class="col-form-label ">Porcion Por Persona</mat-label>
+            <input matInput type="number" [(ngModel)]="porcionPorPersona"  name="porcionPorPersona">
+        </mat-form-field>
+    </div>
+</div>
+<hr *ngIf="busqueda">
+<div class="row" *ngIf="busqueda">
+    <div class="col-lg-3 m-auto">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label for="precio" class="col-form-label ">Precio Condicion</mat-label>
+            <mat-select [(ngModel)]="precioEspecificacion">
+                <mat-option value="equal">Precios iguales a</mat-option>
+                <mat-option value="less">Precios menores a</mat-option>
+                <mat-option value="greater">Precios mayores a</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3 m-auto">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label for="precio" class="col-form-label ">Precio</mat-label>
+            <input matInput type="number" [(ngModel)]="precio"  name="precio">
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3 m-auto">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label for="stock" class="col-form-label ">Stock Condicion</mat-label>
+            <mat-select [(ngModel)]="stockEspecificacion">
+                <mat-option value="equal">Montos iguales a</mat-option>
+                <mat-option value="less">Montos menores a</mat-option>
+                <mat-option value="greater">Montos mayores a</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col-lg-3 m-auto">
+        <mat-form-field  class="col-lg-12" appearance="outline">
+            <mat-label for="stock" class="col-form-label ">Stock</mat-label>
+            <input matInput type="number" [(ngModel)]="stock"  name="stock">
+        </mat-form-field>
+    </div>
+</div>
+<div class="row" *ngIf="busqueda">
+    <div class="pt-1 m-auto">
+        <button mat-raised-button color="primary" (click)="cerrarBusqueda()">Cerrar</button>
+    </div>
+    <div class="pt-1 m-auto">
+        <button mat-raised-button color="primary" (click)="limpiarBusqueda()">Limpiar</button>
+    </div>
+    <div class="pt-1 m-auto">
+        <button mat-raised-button color="primary" (click)="Buscar()">Buscar</button>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<mat-toolbar color="primary" style="padding-top: 120px;-webkit-box-shadow: inset 0px 32px 41px 0px rgba(0,0,0,0.23);
+-moz-box-shadow: inset 0px 32px 41px 0px rgba(0,0,0,0.23);
+box-shadow: inset 0px 32px 41px 0px rgba(0,0,0,0.23);">
+  <span style="margin-top: -55px; padding-left: 45%;">Form Ayuda</span>
+</mat-toolbar>
+<div class="container m-auto">
+
+  <app-informacion-ayuda
+  (propagar)="actualizarPersonas($event)"
+    [ayuda]="ayuda">
+  </app-informacion-ayuda>
+
+  <app-informacion-institucion 
+    (propagar)="syncInstitucion($event)"
+    [institucion]="ayuda.institucion">
+  </app-informacion-institucion>
+
+  <app-informacion-productos
+    (propagar)="syncProductos($event)"
+    [lineasDeAyudas]="ayuda.lineasDeAyudas">
+  </app-informacion-productos>
+  
+  <div class="card mt-3 mb-3 p-4 mat-elevation-z8" style="background-color:#303030; color: white;">
+    <div class="row">
+        <!--Enviar-->
+        <button mat-raised-button (click)="save()" color="primary" class="mb-3 m-auto" style="height: 50%; width: 50%;" type="button">
+            <a >Enviar</a>
+        </button>
+        <!--Termina Enviar-->
+    </div>
+  </div>
+</div>
