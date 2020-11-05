@@ -86,7 +86,7 @@ export class FormProductoComponent implements OnInit {
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              text: 'Revise la validez del formulario porfavor.',
+              text: error.error.message
             })
           }
         );
@@ -101,7 +101,7 @@ export class FormProductoComponent implements OnInit {
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              text: 'Revise la validez del formulario porfavor.',
+              text: error.error.message
             })
           }
         );

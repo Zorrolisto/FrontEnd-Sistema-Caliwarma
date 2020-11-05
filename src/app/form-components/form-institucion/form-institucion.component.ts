@@ -82,7 +82,7 @@ export class FormInstitucionComponent implements OnInit, AfterViewInit {
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              text: 'Revise la validez del formulario porfavor.',
+              text: error.error.message
             })
           }
         );
@@ -97,7 +97,7 @@ export class FormInstitucionComponent implements OnInit, AfterViewInit {
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              text: 'Revise la validez del formulario porfavor.',
+              text: error.error.message
             })
           }
         );
