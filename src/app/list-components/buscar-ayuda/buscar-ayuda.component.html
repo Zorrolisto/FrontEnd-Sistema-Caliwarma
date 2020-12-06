@@ -67,9 +67,7 @@
     <div class="col-lg-3">
         <mat-form-field appearance="outline" class="col-lg-12">
             <mat-label>Fecha De Registro</mat-label>
-            <input matInput [matDatepicker]="picker" [(ngModel)]="fechaDeRegistro">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
+            <input matInput type="date" [(ngModel)]="fechaDeRegistro"> 
         </mat-form-field>
     </div>
 </div>
@@ -88,9 +86,7 @@
     <div class="col-lg-3">
         <mat-form-field appearance="outline" class="col-lg-12">
             <mat-label>Fecha De Envio</mat-label>
-            <input matInput [matDatepicker]="picker2" [(ngModel)]="fechaDeEnvio">
-            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker>
+            <input matInput type="date" [(ngModel)]="fechaDeEnvio">  
         </mat-form-field>
     </div>
     <div class="col-lg-3">
@@ -106,9 +102,7 @@
     <div class="col-lg-3">
         <mat-form-field appearance="outline" class="col-lg-12">
             <mat-label>Fecha De Llegada</mat-label>
-            <input matInput [matDatepicker]="picker3" [(ngModel)]="fechaDeLlegada">
-            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-            <mat-datepicker #picker3></mat-datepicker>
+            <input matInput type="date" [(ngModel)]="fechaDeLlegada">  
         </mat-form-field>
     </div>
 </div>
