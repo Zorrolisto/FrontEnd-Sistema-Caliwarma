@@ -1,4 +1,4 @@
-# Caliwarma Alimentos
+# FrontEnd Caliwarma Alimentos
 
 Este proyecto es el frontend del api de Caliwarma Alimentos donde simulamos un caliwarma y mostramos los alimentos que se han repartido y a qué colegios se le repartieron.
 
